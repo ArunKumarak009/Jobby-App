@@ -1,5 +1,10 @@
+import {AiFillHome} from 'react-icons/ai'
+import {BsBriefcaseFill} from 'react-icons/bs'
+import {FiLogOut} from 'react-icons/fi'
 import Cookies from 'js-cookie'
-import {withRouter, Link} from 'react-router-dom'
+// import { Link, withRouter } from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom/cjs/react-router-dom.min'
+
 import './index.css'
 
 const Header = props => {
@@ -10,30 +15,63 @@ const Header = props => {
   }
 
   return (
-    <nav className="navbar-container">
-      <div>
-        <Link to="/" className="link-item">
+    <header className="header-container">
+      <div className="mobile-navbar">
+        <Link to="/">
           <img
+            className="header-logo"
             src="https://assets.ccbp.in/frontend/react-js/logo-img.png"
             alt="website logo"
-            className="website-logo"
           />
         </Link>
+        <ul className="route-icons-container">
+          <li>
+            <Link to="/">
+              <button type="button">
+                <AiFillHome className="route-icon" />
+              </button>
+            </Link>
+          </li>
+          <li>
+            <Link to="/jobs">
+              <button type="button">
+                <BsBriefcaseFill className="route-icon" />
+              </button>
+            </Link>
+          </li>
+          <li>
+            <button type="button" onClick={onClickLogout}>
+              <FiLogOut className="route-icon" />
+            </button>
+          </li>
+        </ul>
       </div>
-      <ul className="header-list-items">
-        <Link to="/" className="link-item">
-          <li className="home-heading home">Home</li>
+      <div className="desktop-navbar">
+        <Link to="/">
+          <img
+            className="header-logo"
+            src="https://assets.ccbp.in/frontend/react-js/logo-img.png"
+            alt="website logo"
+          />
         </Link>
-        <Link to="/jobs" className="link-item">
-          <li className="jon-heading home">Jobs</li>
-        </Link>
-      </ul>
-      <div>
+        <ul className="route-items">
+          <li>
+            <Link to="/" className="nav-link">
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link to="/jobs" className="nav-link">
+              Jobs
+            </Link>
+          </li>
+        </ul>
+
         <button type="button" className="logout-button" onClick={onClickLogout}>
           Logout
         </button>
       </div>
-    </nav>
+    </header>
   )
 }
 
